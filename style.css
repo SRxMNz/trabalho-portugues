@@ -1,0 +1,144 @@
+:root {
+    --preto-museu: #0c0c0c;
+    --cinza-parede: #181818;
+    --ouro-velho: #cca660;
+    --texto-claro: #dcdcdc;
+    --papel-moldura: #f0f0ed;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--preto-museu); color: var(--texto-claro); font-family: 'Montserrat', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+h1, h2, h3, .titulo-gigante { font-family: 'Cormorant Garamond', serif; font-weight: 400; color: #fff; }
+.dourado-fino { color: var(--ouro-velho); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; display: block; margin-bottom: 10px; font-weight: 500; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+/* TRAVA INICIAL */
+#porta-museu { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center; }
+.convite-card { max-width: 500px; padding: 40px; }
+.convite-card h1 { font-size: 3rem; margin: 10px 0 20px 0; }
+.convite-card p { line-height: 1.8; margin-bottom: 30px; color: #aaa; }
+.btn-museu { background: transparent; border: 1px solid var(--ouro-velho); color: var(--ouro-velho); padding: 15px 40px; font-family: 'Montserrat'; font-size: 0.8rem; letter-spacing: 2px; cursor: pointer; transition: 0.4s; }
+.btn-museu:hover { background: var(--ouro-velho); color: #000; }
+
+strong{
+color:#cca660;
+font-weight:600;
+text-shadow:0 0 5px rgba(204,166,96,0.4);
+}
+
+/* PLAYER */
+.audioguia-flutuante { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(20, 20, 20, 0.95); border: 1px solid #333; padding: 10px 20px; border-radius: 50px; display: flex; align-items: center; gap: 15px; z-index: 1000; backdrop-filter: blur(5px); }
+.capa-mini { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.audio-controles { width: 150px; }
+.audio-controles .dourado-fino { font-size: 0.6rem; margin-bottom: 5px; }
+.linha-tempo { width: 100%; height: 2px; background: #444; }
+#progresso { width: 0%; height: 100%; background: var(--ouro-velho); }
+#btnPlayPause { background: none; border: none; color: var(--ouro-velho); font-size: 1.5rem; cursor: pointer; }
+
+/* HERO E SALAS */
+.hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, rgba(28,28,28,1) 0%, rgba(12,12,12,1) 100%); position: relative; }
+.titulo-gigante { font-size: 6rem; font-style: italic; margin-bottom: 10px; }
+.sala-exposicao { padding: 120px 0; border-bottom: 1px solid #222; }
+.fundo-cinza-escuro { background-color: var(--cinza-parede); }
+.cabecalho-sala { text-align: center; margin-bottom: 60px; }
+.cabecalho-sala h2 { font-size: 3rem; }
+.subtitulo-sala { color: #888; font-style: italic; margin-top: 10px; }
+
+/* TEATRO MUNICIPAL - TAMANHO ARRUMADO */
+.layout-lado-a-lado { display: flex; flex-wrap: wrap; align-items: center; gap: 60px; }
+.texto-museu { flex: 1; min-width: 300px; }
+.texto-museu h2 { font-size: 3rem; margin-bottom: 20px; }
+.texto-museu p { line-height: 1.8; margin-bottom: 20px; font-size: 1.1rem; color: #ccc; }
+.imagem-museu { flex: 1; min-width: 300px; text-align: center; }
+.imagem-museu img { 
+    width: 100%; 
+    max-width: 500px; /* NUNCA VAI FICAR GIGANTE */
+    border-radius: 2px; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* Sombra realista */
+}
+.legenda-foto { display: block; margin-top: 15px; font-size: 0.8rem; color: #777; font-style: italic; }
+
+/* RETRATOS (ARTISTAS) */
+.grid-retratos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 40px; text-align: center; }
+.retrato img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); border: 1px solid #444; transition: 0.5s; }
+.retrato:hover img { filter: grayscale(0%); border-color: var(--ouro-velho); transform: scale(1.05); }
+.retrato p { margin-top: 15px; font-family: 'Cormorant Garamond'; font-size: 1.2rem; color: var(--ouro-velho); }
+
+/* QUADROS DA GALERIA (A GRANDE MÁGICA) */
+.parede-galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; }
+.quadro { cursor: pointer; transition: transform 0.4s ease; display: flex; flex-direction: column; align-items: center; }
+.quadro:hover { transform: scale(1.02); }
+.moldura {
+    background-color: var(--papel-moldura); /* O passe-partout bege */
+    padding: 15px 15px 45px 15px; /* Estilo polaroid/quadro real */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9); /* Sombra pesada na parede preta */
+    width: 100%;
+    max-width: 350px;
+    height: 400px;
+    display: flex; align-items: center; justify-content: center;
+}
+.moldura img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Nunca corta a obra de arte */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+.placa-obra { text-align: center; margin-top: 25px; border-left: 1px solid var(--ouro-velho); padding-left: 15px; }
+.placa-obra h3 { font-size: 1.5rem; margin-bottom: 5px; }
+.placa-obra span { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ANIMAÇÃO DE APARECER (INTERATIVIDADE ELEGANTE) */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; }
+.fade-in.visivel { opacity: 1; transform: translateY(0); }
+
+/* MODAL DE AMPLIAÇÃO */
+.modal-fundo { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; align-items: center; justify-content: center; }
+.modal-centro { text-align: center; }
+#imagem-ampliada { max-width: 85vw; max-height: 75vh; object-fit: contain; border: 15px solid var(--papel-moldura); box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+.modal-legenda { margin-top: 20px; }
+#titulo-ampliado { font-size: 2rem; color: var(--ouro-velho); }
+#autor-ampliado { font-family: 'Montserrat'; color: #aaa; margin-top: 5px; }
+
+/* Estilo da Ficha Técnica no Hero */
+.credits-box {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-left: 1px solid var(--ouro-velho);
+    display: inline-block;
+    text-align: left;
+}
+
+.credits-box p {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin: 5px 0;
+    letter-spacing: 1px;
+}
+
+.credits-box strong {
+    color: var(--ouro-velho);
+    font-weight: 500;
+}
+
+/* Rodapé Estilo Galeria */
+.footer-museu {
+    padding: 60px 0;
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    margin-top: 100px;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
